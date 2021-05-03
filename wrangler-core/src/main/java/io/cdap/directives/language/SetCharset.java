@@ -96,7 +96,7 @@ public class SetCharset implements Directive, Lineage {
       } else if (object instanceof ByteBuffer) {
         buffer = (ByteBuffer) object;
       } else if (object instanceof String) {
-        buffer = ByteBuffer.wrap(((String) object).getBytes());
+        buffer = ByteBuffer.wrap(((String) object).getBytes(Charset.forName("UTF-8")));
       } else {
         throw new DirectiveExecutionException(
           NAME, String.format("Column '%s' is of invalid type '%s'. It should be of type 'byte array' or " +
