@@ -95,10 +95,12 @@ public class SetCharset implements Directive, Lineage {
         buffer = ByteBuffer.wrap((byte[]) object);
       } else if (object instanceof ByteBuffer) {
         buffer = (ByteBuffer) object;
+      } else if (object instanceof String) {
+        buffer = ByteBuffer.wrap(((String) object).getBytes());
       } else {
         throw new DirectiveExecutionException(
           NAME, String.format("Column '%s' is of invalid type '%s'. It should be of type 'byte array' or " +
-                                "'ByteBuffer'.", column, object.getClass().getSimpleName()));
+                                "'ByteBuffer'or 'String'.", column, object.getClass().getSimpleName()));
       }
 
       try {
