@@ -112,8 +112,8 @@ public class S3Handler extends AbstractWranglerHandler {
     evaluateMacros.put("region", connection.getProperties().get("region"));
     S3Configuration s3Configuration = new S3Configuration(evaluateMacros);
     AmazonS3 s3 = new AmazonS3Client(s3Configuration);
-    // Region region = Region.getRegion(Regions.fromName(s3Configuration.getRegion()));
-    // s3.setRegion(region);
+    Region region = Region.getRegion(Regions.fromName(s3Configuration.getRegion()));
+    s3.setRegion(region);
     // TODO: this code is for Yandex Storage
     s3.setEndpoint("storage.yandexcloud.net");
     return s3;

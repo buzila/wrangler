@@ -44,7 +44,9 @@ public class S3Configuration implements AWSCredentials {
     }
     accessKeyId = properties.get("accessKeyId");
     accessSecretKey = properties.get("accessSecretKey");
-    region = properties.get("region");
+    // TODO temporary changed for Yandex Storage
+    // region = properties.get("region");
+    region = "ru-central1";
   }
 
   @Override
