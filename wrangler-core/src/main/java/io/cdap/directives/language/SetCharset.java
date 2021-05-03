@@ -104,7 +104,7 @@ public class SetCharset implements Directive, Lineage {
       }
 
       try {
-        CharBuffer result = Charset.forName(charset).decode(buffer);
+        CharBuffer result = Charset.forName("UTF-8").decode(buffer);
         row.setValue(idx, result.toString());
       } catch (Error e) {
         throw new DirectiveExecutionException(
