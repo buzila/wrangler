@@ -270,7 +270,8 @@ public class S3Handler extends AbstractWranglerHandler {
       properties.put("format", format.name().toLowerCase());
       properties.put("accessID", s3Configuration.getAWSAccessKeyId());
       properties.put("accessKey", s3Configuration.getAWSSecretKey());
-      properties.put("path", String.format("s3n://%s/%s", bucketName, key));
+      // TODO: Try to change format from s3n for Yandex Storage
+      properties.put("path", String.format("s3a://%s/%s", bucketName, key));
       properties.put("copyHeader", String.valueOf(shouldCopyHeader(ws, namespacedWorkspaceId)));
       properties.put("schema", format.getSchema().toString());
 
