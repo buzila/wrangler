@@ -397,9 +397,12 @@ public class S3Handler extends AbstractWranglerHandler {
   }
 
   private static S3ObjectInfo fromBucket(Bucket bucket) {
+    // TODO fix for Yandex
+    String owner = bucket.getOwner().getDisplayName();
+    if (owner == null) owner = "NA";
     return S3ObjectInfo.builder(bucket.getName(), "bucket")
       .setCreated(bucket.getCreationDate().getTime())
-      .setOwner(bucket.getOwner().getDisplayName())
+      .setOwner(owner)
       .setIsDirectory(true)
       .build();
   }
